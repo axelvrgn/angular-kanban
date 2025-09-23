@@ -8,6 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserStoryDialog } from '../user-story-dialog/user-story-dialog';
 
+export interface IUserStory {
+  id: number;
+  name: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-user-story',
   imports: [
@@ -22,7 +28,7 @@ import { UserStoryDialog } from '../user-story-dialog/user-story-dialog';
   styleUrl: './user-story.scss',
 })
 export class UserStory {
-  @Input() item!: string;
+  @Input() userStory!: IUserStory;
   @Input() index!: number;
   @Output() remove = new EventEmitter<number>();
 
@@ -30,13 +36,13 @@ export class UserStory {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(UserStoryDialog, {
-      data: this.item,
+      data: this.userStory,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result !== undefined) {
-        this.item = result;
+        this.userStory = result;
       }
     });
   }

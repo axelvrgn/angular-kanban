@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Column } from '../column/column';
 import { CommonModule } from '@angular/common';
+import { IUserStory } from '../user-story/user-story';
 
 interface IColumn {
   title: string;
-  items: string[];
+  userStories: IUserStory[];
 }
 
 @Component({
@@ -16,18 +17,21 @@ interface IColumn {
 })
 export class Table {
   columns: IColumn[] = [
-    { title: 'À faire', items: ['Style css'] },
+    { title: 'À faire', userStories: [{ id: 1, name: 'Style css', description: '' }] },
     {
       title: 'En cours',
-      items: ['Tableau kanban'],
+      userStories: [{ id: 2, name: 'Tableau kanban', description: '' }],
     },
     {
       title: 'À tester',
-      items: [],
+      userStories: [],
     },
     {
       title: 'Terminé',
-      items: ['Authentification', 'Inscription'],
+      userStories: [
+        { id: 3, name: 'Authentification', description: '' },
+        { id: 4, name: 'Inscription', description: '' },
+      ],
     },
   ];
 
@@ -35,7 +39,7 @@ export class Table {
     return this.columns.map((_, j) => 'list-' + j);
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<IUserStory[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

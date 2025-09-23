@@ -1,22 +1,22 @@
 <div class="column">
   <div class="column-header">
     <h3>{{ title }}</h3>
-    @if (items.length > 0) {
-    <p>{{ items.length }}</p>
+    @if (userStories.length > 0) {
+    <p>{{ userStories.length }}</p>
     }
   </div>
 
   <div
     cdkDropList
     [id]="listId"
-    [cdkDropListData]="items"
+    [cdkDropListData]="userStories"
     [cdkDropListConnectedTo]="connectedTo"
     (cdkDropListDropped)="drop($event)"
     class="user-story-list"
   >
-    @for (item of items; track item; let idx = $index) {
+    @for (userStory of userStories; track userStory.id; let idx = $index) {
 
-    <app-user-story [item]="item" [index]="idx" cdkDrag></app-user-story>
+    <app-user-story [userStory]="userStory" [index]="idx" CdkDrag></app-user-story>
 
     }
   </div>

@@ -1,10 +1,11 @@
 <div class="table">
+  @for (column of columns; track column; let idx = $index) {
   <app-column
-    *ngFor="let column of columns; let i = index"
     [title]="column.title"
-    [items]="column.items"
+    [userStories]="column.userStories"
     [drop]="drop"
-    [listId]="'list-' + i"
+    [listId]="'list-' + idx"
     [connectedTo]="getColumnIds()"
   ></app-column>
+  }
 </div>
