@@ -1,0 +1,15 @@
+<div class="column">
+  <h3>{{ title }}</h3>
+  <div
+    cdkDropList
+    [id]="listId"
+    [cdkDropListData]="items"
+    [cdkDropListConnectedTo]="connectedTo"
+    (cdkDropListDropped)="drop($event)"
+    class="column-list"
+  >
+    <div *ngFor="let item of items" cdkDrag class="column-item">
+      {{ item }}
+    </div>
+  </div>
+</div>

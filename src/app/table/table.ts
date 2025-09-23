@@ -1,23 +1,39 @@
 import { Component } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDrag,
-  CdkDropList,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Column } from '../column/column';
+import { CommonModule } from '@angular/common';
+
+interface IColumn {
+  title: string;
+  items: string[];
+}
 
 @Component({
   selector: 'app-table',
-  imports: [CdkDropList, CdkDrag],
-
+  imports: [CommonModule, Column],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })
 export class Table {
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  columns: IColumn[] = [
+    { title: 'À faire', items: ['Style css'] },
+    {
+      title: 'En cours',
+      items: ['Tableau kanban'],
+    },
+    {
+      title: 'À tester',
+      items: [],
+    },
+    {
+      title: 'Terminé',
+      items: ['Authentification', 'Inscription'],
+    },
+  ];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  getColumnIds(): string[] {
+    return this.columns.map((_, j) => 'list-' + j);
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
