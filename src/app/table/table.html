@@ -1,5 +1,6 @@
 <div class="table">
   @for (column of columns; track column; let idx = $index) {
+
   <app-column
     [title]="column.title"
     [userStories]="column.userStories"
@@ -7,5 +8,6 @@
     [listId]="'list-' + idx"
     [connectedTo]="getColumnIds()"
   ></app-column>
+
   }
 </div>

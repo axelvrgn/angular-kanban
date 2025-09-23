@@ -2,4 +2,12 @@
   <h4 (click)="openDialog()">
     {{ userStory.name }}
   </h4>
+
+  <div class="user-story-footer">
+    <p>US-{{ userStory.id }}</p>
+    <app-avatar
+      [imageUrl]="'https://randomuser.me/api/portraits/men/' + ((userStory.id % 30) + 1) + '.jpg'"
+      [alt]="'Avatar ' + userStory.name"
+    ></app-avatar>
+  </div>
 </div>

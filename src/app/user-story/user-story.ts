@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserStoryDialog } from '../user-story-dialog/user-story-dialog';
+import { Avatar } from '../avatar/avatar';
 
 export interface IUserStory {
   id: number;
@@ -17,6 +18,7 @@ export interface IUserStory {
 @Component({
   selector: 'app-user-story',
   imports: [
+    Avatar,
     CommonModule,
     CdkDrag,
     MatFormFieldModule,

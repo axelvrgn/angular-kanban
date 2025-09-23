@@ -17,10 +17,13 @@ interface IColumn {
 })
 export class Table {
   columns: IColumn[] = [
-    { title: 'À faire', userStories: [{ id: 1, name: 'Style css', description: '' }] },
+    {
+      title: 'À faire',
+      userStories: [{ id: 1, name: 'Style css', description: 'Implémenter le style CSS' }],
+    },
     {
       title: 'En cours',
-      userStories: [{ id: 2, name: 'Tableau kanban', description: '' }],
+      userStories: [{ id: 2, name: 'Tableau kanban', description: 'Créer un tableau kanban' }],
     },
     {
       title: 'À tester',
@@ -29,8 +32,8 @@ export class Table {
     {
       title: 'Terminé',
       userStories: [
-        { id: 3, name: 'Authentification', description: '' },
-        { id: 4, name: 'Inscription', description: '' },
+        { id: 3, name: 'Authentification', description: "Mettre en place l'authentification" },
+        { id: 4, name: 'Inscription', description: "Mettre en place l'inscription" },
       ],
     },
   ];
