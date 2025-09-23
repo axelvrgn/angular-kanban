@@ -1,15 +1,23 @@
 <div class="column">
-  <h3>{{ title }}</h3>
+  <div class="column-header">
+    <h3>{{ title }}</h3>
+    @if (items.length > 0) {
+    <p>{{ items.length }}</p>
+    }
+  </div>
+
   <div
     cdkDropList
     [id]="listId"
     [cdkDropListData]="items"
     [cdkDropListConnectedTo]="connectedTo"
     (cdkDropListDropped)="drop($event)"
-    class="column-list"
+    class="user-story-list"
   >
-    <div *ngFor="let item of items" cdkDrag class="column-item">
-      {{ item }}
-    </div>
+    @for (item of items; track item; let idx = $index) {
+
+    <app-user-story [item]="item" [index]="idx" cdkDrag></app-user-story>
+
+    }
   </div>
 </div>

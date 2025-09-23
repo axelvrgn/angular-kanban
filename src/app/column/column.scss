@@ -5,14 +5,15 @@
   border: 1px solid var(--gray-400);
   padding: 8px;
   height: 100%;
+  width: 200px;
 }
 
-.column-list {
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-story-list {
   flex: 1;
-}
-
-.column-item {
-  padding: 8px;
-  margin: 4px 0;
-  background-color: var(--gray-400);
 }

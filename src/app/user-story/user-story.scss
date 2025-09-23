@@ -1,0 +1,9 @@
+.user-story {
+  padding: 8px;
+  margin: 4px 0;
+  background-color: #e1e1e1;
+
+  &:hover {
+    cursor: grab;
+  }
+}
