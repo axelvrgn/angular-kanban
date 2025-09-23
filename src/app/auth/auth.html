@@ -1,0 +1,12 @@
+<form (ngSubmit)="login()" class="auth-form">
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+  <input
+    type="password"
+    [(ngModel)]="password"
+    name="password"
+    placeholder="Mot de passe"
+    required
+  />
+  <button type="submit" [disabled]="loading">Se connecter</button>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</form>

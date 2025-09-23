@@ -1,0 +1,20 @@
+<form (ngSubmit)="register()" class="register-form">
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+  <input
+    type="password"
+    [(ngModel)]="password"
+    name="password"
+    placeholder="Mot de passe"
+    required
+  />
+  <input
+    type="password"
+    [(ngModel)]="confirmPassword"
+    name="confirmPassword"
+    placeholder="Confirmez le mot de passe"
+    required
+  />
+  <button type="submit" [disabled]="loading">Créer un compte</button>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+</form>
