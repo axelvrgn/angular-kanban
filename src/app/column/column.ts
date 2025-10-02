@@ -1,7 +1,8 @@
 import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { IUserStory, UserStory } from '../user-story/user-story';
+import { UserStory } from '../user-story/user-story';
+import { IUserStory } from '../models/user-story.model';
 
 @Component({
   selector: 'app-column',

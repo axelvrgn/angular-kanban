@@ -10,7 +10,7 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { IUserStory } from '../user-story/user-story';
+import { IUserStory } from '../models/user-story.model';
 
 @Component({
   selector: 'app-user-story-dialog',
@@ -29,6 +29,13 @@ import { IUserStory } from '../user-story/user-story';
 export class UserStoryDialog {
   readonly dialogRef = inject(MatDialogRef<UserStoryDialog>);
   readonly data = inject<IUserStory>(MAT_DIALOG_DATA);
+
+  editDescription = false;
+  description: string = '';
+
+  ngOnInit() {
+    this.description = this.data.description;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

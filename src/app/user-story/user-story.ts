@@ -8,12 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserStoryDialog } from '../user-story-dialog/user-story-dialog';
 import { Avatar } from '../avatar/avatar';
-
-export interface IUserStory {
-  id: number;
-  name: string;
-  description: string;
-}
+import { IUserStory } from '../models/user-story.model';
 
 @Component({
   selector: 'app-user-story',
@@ -39,6 +34,7 @@ export class UserStory {
   openDialog(): void {
     const dialogRef = this.dialog.open(UserStoryDialog, {
       data: this.userStory,
+      minWidth: '600px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
