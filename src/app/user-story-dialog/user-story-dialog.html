@@ -4,7 +4,10 @@
     <div>
       @if (!editDescription) {
 
-      <div (click)="editDescription = true" [innerHTML]="description"></div>
+      <div
+        (click)="editDescription = true"
+        [innerHTML]="description ? description : 'Appuyez pour ajouter une description'"
+      ></div>
 
       } @else {
 
