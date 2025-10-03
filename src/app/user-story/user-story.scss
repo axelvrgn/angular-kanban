@@ -3,10 +3,12 @@
   margin: 4px 0;
   background-color: white;
 
+  border: 2px solid transparent;
   border-radius: 4px;
 
   &:hover {
-    cursor: grab;
+    cursor: pointer;
+    border-color: var(--primary-color);
   }
 }
 

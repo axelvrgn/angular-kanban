@@ -16,7 +16,12 @@
   >
     @for (userStory of userStories; track userStory.id; let idx = $index) {
 
-    <app-user-story [userStory]="userStory" [index]="idx" CdkDrag></app-user-story>
+    <app-user-story
+      [userStory]="userStory"
+      [index]="idx"
+      (update)="onUpdateUserStory(idx, $event)"
+      cdkDrag
+    ></app-user-story>
 
     }
   </div>

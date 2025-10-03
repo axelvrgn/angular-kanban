@@ -1,6 +1,6 @@
 import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserStory } from '../user-story/user-story';
 import { IUserStory } from '../models/user-story.model';
 
@@ -16,4 +16,10 @@ export class Column {
   @Input() drop!: (event: CdkDragDrop<IUserStory[]>) => void;
   @Input() listId!: string;
   @Input() connectedTo!: string[];
+  @Output() updateUserStory = new EventEmitter<{ index: number; userStory: IUserStory }>();
+
+  onUpdateUserStory(index: number, updatedUserStory: IUserStory) {
+    console.log('Column relaying update:', index, updatedUserStory);
+    this.updateUserStory.emit({ index, userStory: updatedUserStory });
+  }
 }

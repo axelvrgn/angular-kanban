@@ -1,18 +1,23 @@
-<button matFab (click)="openAddUserStoryDialog()" extended>
-  <mat-icon>add</mat-icon>
-  Créer un ticket
-</button>
-
 <div class="table">
-  @for (column of columns; track column; let idx = $index) {
+  <div class="actions">
+    <button (click)="openAddUserStoryDialog()">
+      <mat-icon>add</mat-icon>
+      Créer un ticket
+    </button>
+  </div>
 
-  <app-column
-    [title]="column.title"
-    [userStories]="column.userStories"
-    [drop]="drop"
-    [listId]="'list-' + idx"
-    [connectedTo]="getColumnIds()"
-  ></app-column>
+  <div class="columns">
+    @for (column of columns; track column; let idx = $index) {
 
-  }
+    <app-column
+      [title]="column.title"
+      [userStories]="column.userStories"
+      [drop]="drop"
+      [listId]="'list-' + idx"
+      [connectedTo]="getColumnIds()"
+      (updateUserStory)="onUpdateUserStory(idx, $event)"
+    ></app-column>
+
+    }
+  </div>
 </div>

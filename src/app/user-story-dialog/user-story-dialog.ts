@@ -40,4 +40,14 @@ export class UserStoryDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  updateUserStory(): void {
+    this.editDescription = false;
+    const updatedData = {
+      ...this.data,
+      description: this.description,
+    };
+    console.log('Dialog closing with:', updatedData);
+    this.dialogRef.close(updatedData);
+  }
 }

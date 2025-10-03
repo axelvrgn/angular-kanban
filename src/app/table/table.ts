@@ -27,6 +27,8 @@ export class Table {
   drop = (event: CdkDragDrop<IUserStory[]>) => {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      // Force change detection by reassigning the array
+      event.container.data = [...event.container.data];
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -34,6 +36,9 @@ export class Table {
         event.previousIndex,
         event.currentIndex
       );
+      // Force change detection by reassigning both arrays
+      event.previousContainer.data = [...event.previousContainer.data];
+      event.container.data = [...event.container.data];
 
       // Mettre à jour l'idColumn de la userStory déplacée
       const movedUserStory = event.container.data[event.currentIndex];
@@ -48,6 +53,11 @@ export class Table {
 
     console.log(this.columns);
   };
+
+  onUpdateUserStory(columnIndex: number, event: { index: number; userStory: IUserStory }) {
+    this.columns[columnIndex].userStories[event.index] = { ...event.userStory };
+    this.columns = [...this.columns];
+  }
 
   openAddUserStoryDialog() {
     const dialogRef = this.dialog.open(AddUserStoryDialog, {

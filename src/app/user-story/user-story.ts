@@ -27,20 +27,20 @@ import { IUserStory } from '../models/user-story.model';
 export class UserStory {
   @Input() userStory!: IUserStory;
   @Input() index!: number;
-  @Output() remove = new EventEmitter<number>();
+  @Output() update = new EventEmitter<IUserStory>();
 
   readonly dialog = inject(MatDialog);
 
   openDialog(): void {
     const dialogRef = this.dialog.open(UserStoryDialog, {
-      data: this.userStory,
+      data: { ...this.userStory }, // Passe une copie pour éviter la mutation directe
       minWidth: '600px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       if (result !== undefined) {
-        this.userStory = result;
+        console.log('UserStory emitting update:', result);
+        this.update.emit(result); // Le parent remplacera l'objet dans le tableau
       }
     });
   }
