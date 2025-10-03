@@ -11,6 +11,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { IUserStory } from '../models/user-story.model';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-user-story-dialog',
@@ -22,6 +23,7 @@ import { IUserStory } from '../models/user-story.model';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
+    QuillModule,
   ],
   templateUrl: './user-story-dialog.html',
   styleUrl: './user-story-dialog.scss',

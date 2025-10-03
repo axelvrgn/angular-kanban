@@ -1,31 +1,26 @@
-<h2 mat-dialog-title>{{ data.name }}</h2>
-<mat-dialog-content>
-  <h3>Description</h3>
-  <div>
-    @if (!editDescription) {
+<div class="wide-dialog">
+  <h2 mat-dialog-title>{{ data.name }}</h2>
+  <mat-dialog-content>
+    <div>
+      @if (!editDescription) {
 
-    <p (click)="editDescription = true" class="editable-input">
-      {{ description || 'Cliquez pour ajouter une description...' }}
-    </p>
+      <div (click)="editDescription = true" [innerHTML]="description"></div>
 
-    } @else {
+      } @else {
 
-    <mat-form-field style="width: 100%">
-      <mat-label>Description</mat-label>
-      <textarea
-        matInput
+      <quill-editor
         [(ngModel)]="description"
-        rows="5"
-        style="width: 100%"
-        autofocus
-      ></textarea>
-    </mat-form-field>
+        [readOnly]="!editDescription"
+        style="min-height: 200px"
+      ></quill-editor>
+
+      }
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button matButton (click)="onNoClick()">Annuler</button>
+    @if(editDescription) {
+    <button matButton="filled" (click)="updateUserStory()">Mettre à jour</button>
     }
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button matButton (click)="onNoClick()">Annuler</button>
-  @if(editDescription) {
-  <button matButton="filled" (click)="updateUserStory()">Mettre à jour</button>
-  }
-</mat-dialog-actions>
+  </mat-dialog-actions>
+</div>

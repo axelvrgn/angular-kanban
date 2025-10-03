@@ -34,7 +34,9 @@ export class UserStory {
   openDialog(): void {
     const dialogRef = this.dialog.open(UserStoryDialog, {
       data: { ...this.userStory }, // Passe une copie pour éviter la mutation directe
-      minWidth: '600px',
+      minWidth: '700px',
+      maxWidth: '90vw',
+      panelClass: 'wide-dialog',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
